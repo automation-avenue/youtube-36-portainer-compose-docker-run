@@ -1,0 +1,17 @@
+services:
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    ports:
+      - '8096:8096/tcp'   # Jellyfin web interface
+      - '7359:7359/udp'   # Network discovery
+      - '1900:1900/udp'   # DLNA port
+    volumes:
+      - /home/marek/Jellyfin/config:/config   # Configuration files
+      - /home/marek/Jellyfin/Movies:/data/Movies  # Movies folder
+      - /home/marek/Jellyfin/Shows:/data/Shows    # Shows folder
+    environment:
+      - PUID=1000                   # Change to your user ID as necessary
+      - PGID=1000                   # Change to your group ID as necessary
+      - TZ=Europe/London
+    restart: unless-stopped

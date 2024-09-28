@@ -1,0 +1,13 @@
+docker run -d \
+  --name jellyfin \
+  -p 8096:8096/tcp \
+  -p 7359:7359/udp \
+  -p 1900:1900/udp \
+  -v /home/marek/Jellyfin/config:/config \
+  -v /home/marek/Jellyfin/Movies:/data/Movies \
+  -v /home/marek/Jellyfin/Shows:/data/Shows \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/London \
+  --restart unless-stopped \
+  linuxserver/jellyfin
